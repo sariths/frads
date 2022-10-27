@@ -1,0 +1,6 @@
+sphinx
+sphinxcontrib-programoutput
+sphinx-argparse
+git+https://github.com/LBNL-ETA/frads.git
+furo
+numpy
