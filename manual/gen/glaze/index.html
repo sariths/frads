@@ -693,7 +693,7 @@
   
     <li class="md-nav__item">
       <a href="../room/" class="md-nav__link">
-        gen room
+        room
       </a>
     </li>
   
@@ -828,12 +828,15 @@ generate a single or a double-pane glazing system.</p>
 <dd>LBNL Optics file path[s]. Either optics files or IGSDB files (see below) is required.</dd>
 <dt><code>-d/--igsdb</code></dt>
 <dd>IGSDB JSON file path[s]. Either optics files (see above) or IGSDB files are required.</dd>
-</dl>
-<p>Optional arguments:</p>
-<p><code>-c/--cspace</code>:</p>
+<dt><code>-c/--cspace</code>:</dt>
+<dd>
 <p>Color space (color primaries) (default: radiance)</p>
-<p><code>-s/--observer</code>:</p>
+</dd>
+<dt><code>-s/--observer</code>:</dt>
+<dd>
 <p>CIE Observer 2° or 10° (default: 2)</p>
+</dd>
+</dl>
 <h2 id="example">Example</h2>
 <p>Generate a single-pane system using a IGSDB JSON file:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gen glaze -d igsdb_product_23000.json
