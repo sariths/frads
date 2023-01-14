@@ -1,0 +1,1110 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>How to control CFS and lighting in E+ Model? - frads documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=OpenSans:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"OpenSans";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#how-to-control-cfs-and-lighting-in-e-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="frads documentation" class="md-header__button md-logo" aria-label="frads documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            frads documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              How to control CFS and lighting in E+ Model?
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LBNL-ETA/frads/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="frads documentation" class="md-nav__button md-logo" aria-label="frads documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    frads documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LBNL-ETA/frads/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../manual/">Manual</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Manual" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../manual/mrad/">mrad</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="mrad" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          mrad
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/mrad/init/" class="md-nav__link">
+        mrad init
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/mrad/run/" class="md-nav__link">
+        mrad run
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../manual/gen/">gen</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="gen" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          gen
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/glaze/" class="md-nav__link">
+        glaze
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/grid/" class="md-nav__link">
+        grid
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4" type="checkbox" id="__nav_2_3_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../manual/gen/matrix/">matrix</a>
+          
+            <label for="__nav_2_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="matrix" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          matrix
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/matrix/point_sky/" class="md-nav__link">
+        point-sky
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/matrix/view_sky/" class="md-nav__link">
+        view-sky
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/matrix/surface_sky/" class="md-nav__link">
+        surface-sky
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/matrix/point_surface/" class="md-nav__link">
+        point-surface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/matrix/view_surface/" class="md-nav__link">
+        view-surface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/matrix/surface_surface/" class="md-nav__link">
+        surface-surface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/matrix/point_sun/" class="md-nav__link">
+        point-sun
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/matrix/view_sun/" class="md-nav__link">
+        view-sun
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/matrix/ncp/" class="md-nav__link">
+        ncp
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gen/room/" class="md-nav__link">
+        room
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/gencolorsky/" class="md-nav__link">
+        gencolorsky
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">How-To Guides</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="How-To Guides" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-To Guides
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ref/">Reference</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#import-required-python-libraries" class="md-nav__link">
+    Import required Python libraries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-energypluse-model" class="md-nav__link">
+    Load EnergyPlus(E+) model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-cfs-objects-to-e-model" class="md-nav__link">
+    Add CFS objects to E+ model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-lighting-objects-to-e-model" class="md-nav__link">
+    Add lighting objects to E+ model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-radiance-model" class="md-nav__link">
+    Initialize Radiance model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#define-controller-function-for-cfs-construction-states-and-daylight-dimming" class="md-nav__link">
+    Define controller function for CFS construction states and daylight dimming
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialize-pyenergyplusapi-to-simulate" class="md-nav__link">
+    Initialize pyenergyplus.api to simulate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-and-visualize-results" class="md-nav__link">
+    Load and visualize results
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+  <a href="https://github.com/LBNL-ETA/frads/edit/master/docs/how-to/guide5.md" title="Edit this page" class="md-content__button md-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+
+<h1 id="how-to-control-cfs-and-lighting-in-e-model">How to control CFS and lighting in E+ Model?</h1>
+<h2 id="import-required-python-libraries">Import required Python libraries</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">datetime</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">sys</span> 
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span> <span class="nn">frads</span> <span class="kn">import</span> <span class="n">epjson2rad</span><span class="p">,</span> <span class="n">eprad</span><span class="p">,</span> <span class="n">parsers</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">methods</span><span class="p">,</span> <span class="n">sky</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">window</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</code></pre></div>
+<p>Need to make sure EnergyPlus is in sys.path in order to load <code> pyenergyplus.api </code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>srcloc = {&#39;win32&#39;: &#39;C:\\&#39;, &#39;darwin&#39;: &#39;/Applications&#39;, &#39;linux&#39;: &#39;/usr/local&#39;}
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dname  = [os.path.join(srcloc[sys.platform], d) for d in os.listdir(srcloc[sys.platform]) if d.startswith(&#39;EnergyPlus&#39;)]
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>ephome = dname.pop()
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>if ephome not in sys.path:
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    sys.path.append(ephome)
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>from pyenergyplus.api import EnergyPlusAPI
+</code></pre></div>
+<h2 id="load-energypluse-model">Load EnergyPlus(E+) model</h2>
+<p>The example idf file is from the EnergyPlus ExampleFiles directory. The building is 15.24m X 15.24m, single zone with one south-facing window.</p>
+<p>Initialize an E+ model by calling <code> eprad.load_epmodel </code> with an input of idf or epjs file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">idf_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;1ZoneUncontrolled_win_1.idf&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">api</span> <span class="o">=</span> <span class="n">EnergyPlusAPI</span><span class="p">()</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">epmodel</span> <span class="o">=</span> <span class="n">eprad</span><span class="o">.</span><span class="n">load_epmodel</span><span class="p">(</span><span class="n">idf_path</span><span class="p">,</span> <span class="n">api</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="add-cfs-objects-to-e-model">Add CFS objects to E+ model</h2>
+<p>Create an unshaded glazing system, consisted of one layer of 6mm clear glass. Initialize a glazing system by calling <code> window.GlazingSystem()</code>. Then, use <code> add_glazing_layer</code>  and <code> add_shading_layer</code> respectively, to add glazing and shading layer to the glazing system. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">gs_unshaded</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">gs_unshaded</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_6.DAT&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>This is how you get the name of the glazing system.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">gs_unshaded</span><span class="o">.</span><span class="n">name</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&#39;Generic Clear Glass&#39;
+</code></pre></div>
+<p>Create a shaded glazing system, consisted of one layer of 6mm clear glass and one layer of shading: 2011-SA1.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">gs_shaded</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">gs_shaded</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_6.DAT&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">gs_shaded</span><span class="o">.</span><span class="n">add_shading_layer</span><span class="p">(</span><span class="s2">&quot;products/2011-SA1.XML&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">gs_shaded</span><span class="o">.</span><span class="n">name</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&#39;Generic Clear Glass_Satine 5500 5%, White Pearl&#39;
+</code></pre></div>
+<p>After the adding glazing and shading layers to the glazing system, compute solar and the solar and photopic results using <code> compute_solar_photopic_results</code>. Need to re-compute each time when the glazing system layering composition changes.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">gs_unshaded</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">gs_shaded</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
+</code></pre></div>
+<p>Add the unshaded and shaded glazing systems to E+ model by calling <code>add_cfs</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_unshaded</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_shaded</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="add-lighting-objects-to-e-model">Add lighting objects to E+ model</h2>
+<p>Use <code>add_lighting</code> to add a lighting object for each of the zones in the building.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">add_lighting</span><span class="p">()</span>
+</code></pre></div>
+<p>This is a list of attributes of the EPModel class</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">windows</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&#39;Zn001:Wall001:Win001&#39;]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">cfs</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&#39;Generic Clear Glass&#39;, &#39;Generic Clear Glass_Satine 5500 5%, White Pearl&#39;]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">lighting_zone</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&#39;Light_ZONE ONE&#39;]
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">zones</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>[&#39;ZONE ONE&#39;]
+</code></pre></div>
+<h2 id="initialize-radiance-model">Initialize Radiance model</h2>
+<p>Create a Radiance model by calling <code>epjson2rad.epjson2rad</code> and passing in an epjs and epw files. The epjs file can be accessed by calling <code>epmodel.epjs</code>. The <code>epjson2rad.epjson2rad</code> function creates an <code>Objects</code> directory for material and geometry primitives and a <code>Resources</code> directory for transmission matrices (xml files). The <code>epjson2rad.epjson2rad</code> function also generates a <code>config</code> file, which contains information about simulation controls setting, site, model, and raysender. Use <code>methods.three_phase</code> to perform the three-phase method and generate the view and daylight matrices under the <code>Matrices</code> directory. Finally, load the view, daylight, and transmission matrices with <code>load_matrix</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">zone</span> <span class="o">=</span> <span class="s2">&quot;ZONE_ONE&quot;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">floor</span> <span class="o">=</span> <span class="s2">&quot;Zn001:Flr001&quot;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">wall_wndo</span> <span class="o">=</span> <span class="s2">&quot;Zn001:Wall001&quot;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># generate Radiance model</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1"># generate view, daylight, and transmission matrices</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">epjson2rad</span><span class="o">.</span><span class="n">epjson2rad</span><span class="p">(</span><span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">,</span> <span class="n">epw</span><span class="o">=</span><span class="s2">&quot;USA_CA_Oakland.Intl.AP.724930_TMY3.epw&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">cfg_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">zone</span><span class="si">}</span><span class="s2">.cfg&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="n">config</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">parse_mrad_config</span><span class="p">(</span><span class="n">cfg_file</span><span class="p">)</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SimControl&quot;</span><span class="p">][</span><span class="s2">&quot;no_multiply&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="k">with</span> <span class="n">methods</span><span class="o">.</span><span class="n">assemble_model</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>    <span class="n">mpath</span> <span class="o">=</span> <span class="n">methods</span><span class="o">.</span><span class="n">three_phase</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="c1"># load matrices</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="n">vmx_window1</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">mpath</span><span class="o">.</span><span class="n">pvmx</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">floor</span><span class="si">}{</span><span class="n">wall_wndo</span><span class="si">}</span><span class="s2">_window&quot;</span><span class="p">])</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="n">dmx_window1</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">mpath</span><span class="o">.</span><span class="n">dmx</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">wall_wndo</span><span class="si">}</span><span class="s2">_window&quot;</span><span class="p">])</span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="n">tmx_unshaded</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resources/Generic Clear Glass.xml&quot;</span><span class="p">)</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="n">tmx_shaded</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resources/Generic Clear Glass_Satine 5500 5%, White Pearl.xml&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="define-controller-function-for-cfs-construction-states-and-daylight-dimming">Define controller function for CFS construction states and daylight dimming</h2>
+<p>Control fenestration construction based on time; the window is shaded from 11:00 to 15:00; otherwise, unshaded. The nominal lighting power of the light is 30W, controlled with linear daylight dimming based on the workplane illuminance. The workplane illuminance at each timestep is computed by calling <code>matrix.multiply_rgb</code> and pass in the view, trasmission, daylight, and sky matrices. Sky matrix is generated by calling <code>sky.genskymtx</code> and passing in a <code>WeaData</code> and <code>WeaMetaData</code> objects.</p>
+<p>Data is accessed through handles, which can be accessed by calling the <code>handles</code> attribute of the <code> EnergyPlusSetup</code> class.  Call <code>get_variable_value</code> and pass in a variable handle to get a variable value (e.g. Direct normal irradiance and diffuse horizontal irradiance). Call <code>actuate</code> and pass in an actuactor handle and value to set the actuator value.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span> <span class="nf">controller</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">dni_thld</span> <span class="o">=</span> <span class="mi">800</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">nominal_lighting_power</span> <span class="o">=</span> <span class="mi">30</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="n">shade_names</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>        <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Generic Clear Glass&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Generic Clear Glass_Satine 5500 5%, White Pearl&quot;</span><span class="p">,</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="p">}</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="n">dt</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">()</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">direct_normal_irradiance</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_variable_value</span><span class="p">(</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>        <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">direct_normal_irradiance</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="p">)</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    <span class="n">diffuse_horizontal_irradiance</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_variable_value</span><span class="p">(</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>        <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">diffuse_horizontal_irradiance</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>    <span class="p">)</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>    <span class="c1">## control CFS construction</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>    <span class="n">window_handle</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">window_actuators</span><span class="p">[</span><span class="s2">&quot;Zn001:Wall001:Win001&quot;</span><span class="p">]</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>    <span class="c1"># change the fenestration to shaded</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>    <span class="k">if</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>        <span class="n">tmx</span> <span class="o">=</span> <span class="n">tmx_shaded</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>        <span class="n">tmx</span> <span class="o">=</span> <span class="n">tmx_unshaded</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>
+<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a>    <span class="n">ep</span><span class="o">.</span><span class="n">actuate</span><span class="p">(</span>
+<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a>        <span class="n">window_handle</span><span class="p">,</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">complex_fenestration_state</span><span class="p">[</span><span class="n">shade_names</span><span class="p">[</span><span class="n">_shades</span><span class="p">]]</span>
+<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a>    <span class="p">)</span>
+<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a>
+<a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a>    <span class="c1">## control lights</span>
+<a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>    <span class="n">light_handle</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">light_actuators</span><span class="p">[</span><span class="s2">&quot;Light_ZONE ONE&quot;</span><span class="p">]</span>
+<a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a>
+<a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a>    <span class="c1"># create WeaData object to create smx</span>
+<a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a>    <span class="n">weadata</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">WeaData</span><span class="p">(</span>
+<a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a>        <span class="n">time</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">dni</span><span class="o">=</span><span class="n">direct_normal_irradiance</span><span class="p">,</span> <span class="n">dhi</span><span class="o">=</span><span class="n">diffuse_horizontal_irradiance</span>
+<a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a>    <span class="p">)</span>
+<a id="__codelineno-16-40" name="__codelineno-16-40" href="#__codelineno-16-40"></a>    <span class="c1"># initialize sky/sun matrix</span>
+<a id="__codelineno-16-41" name="__codelineno-16-41" href="#__codelineno-16-41"></a>    <span class="n">smx</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">sky</span><span class="o">.</span><span class="n">genskymtx</span><span class="p">([</span><span class="n">weadata</span><span class="p">],</span> <span class="n">meta</span><span class="p">,</span> <span class="n">mfactor</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+<a id="__codelineno-16-42" name="__codelineno-16-42" href="#__codelineno-16-42"></a>    <span class="c1"># get workplane illuminance</span>
+<a id="__codelineno-16-43" name="__codelineno-16-43" href="#__codelineno-16-43"></a>    <span class="n">wpi</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">multiply_rgb</span><span class="p">(</span><span class="n">vmx_window1</span><span class="p">,</span> <span class="n">tmx</span><span class="p">,</span> <span class="n">dmx_window1</span><span class="p">,</span> <span class="n">smx</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">47.4</span><span class="p">,</span> <span class="mf">119.9</span><span class="p">,</span> <span class="mf">11.6</span><span class="p">])</span>
+<a id="__codelineno-16-44" name="__codelineno-16-44" href="#__codelineno-16-44"></a>    <span class="n">avg_wpi</span> <span class="o">=</span> <span class="n">wpi</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-16-45" name="__codelineno-16-45" href="#__codelineno-16-45"></a>
+<a id="__codelineno-16-46" name="__codelineno-16-46" href="#__codelineno-16-46"></a>    <span class="c1"># lighting power, assuming linear dimming curve</span>
+<a id="__codelineno-16-47" name="__codelineno-16-47" href="#__codelineno-16-47"></a>    <span class="n">lighting_power</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">avg_wpi</span> <span class="o">/</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">nominal_lighting_power</span>
+<a id="__codelineno-16-48" name="__codelineno-16-48" href="#__codelineno-16-48"></a>
+<a id="__codelineno-16-49" name="__codelineno-16-49" href="#__codelineno-16-49"></a>    <span class="n">ep</span><span class="o">.</span><span class="n">actuate</span><span class="p">(</span><span class="n">light_handle</span><span class="p">,</span> <span class="n">lighting_power</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="initialize-pyenergyplusapi-to-simulate">Initialize pyenergyplus.api to simulate</h2>
+<p>Register the controller functions to be call back by EnergyPlus by calling <code>set_callback</code> and passing in a callback point and function. To simulate, use <code>run</code> with optional parameters: <code>-w</code> weather file, <code>-d</code> output directory, and <code>-p</code> output prefix (default: eplus).</p>
+<p>Refer to <a href="https://energyplus.net/assets/nrel_custom/pdfs/pdfs_v22.1.0/EMSApplicationGuide.pdf">Application Guide for EMS</a> for descriptions of the calling points .</p>
+<div class="highlight"><pre><span></span><code>&quot;The calling point called “BeginTimestepBeforePredictor” occurs near the beginning of each timestep
+but before the predictor executes. “Predictor” refers to the step in EnergyPlus modeling when the
+zone loads are calculated. This calling point is useful for controlling components that affect the
+thermal loads the HVAC systems will then attempt to meet. Programs called from this point
+might actuate internal gains based on current weather or on the results from the previous timestep.
+Demand management routines might use this calling point to reduce lighting or process loads,
+change thermostat settings, etc.&quot;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">with</span> <span class="n">eprad</span><span class="o">.</span><span class="n">EnergyPlusSetup</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">)</span> <span class="k">as</span> <span class="n">ep</span><span class="p">:</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="c1"># create WeaMetaData object to create smx</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="n">loc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">[</span><span class="s2">&quot;Site:Location&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">meta</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">WeaMetaData</span><span class="p">(</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>        <span class="n">city</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>        <span class="n">country</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>        <span class="n">elevation</span><span class="o">=</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">],</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>        <span class="n">latitude</span><span class="o">=</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="n">longitude</span><span class="o">=</span><span class="mi">0</span> <span class="o">-</span> <span class="n">loc</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="n">timezone</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">loc</span><span class="p">[</span><span class="s2">&quot;time_zone&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">15</span><span class="p">,</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    <span class="p">)</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="n">ep</span><span class="o">.</span><span class="n">set_callback</span><span class="p">(</span><span class="s2">&quot;callback_begin_system_timestep_before_predictor&quot;</span><span class="p">,</span> <span class="n">controller</span><span class="p">)</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>    <span class="n">ep</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">weather_file</span><span class="o">=</span><span class="s2">&quot;USA_CA_Oakland.Intl.AP.724930_TMY3.epw&quot;</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="s2">&quot;1ZoneUncontrolled_win_1&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="load-and-visualize-results">Load and visualize results</h2>
+<p>Use <code>pd.read_csv</code> to read the output csv file.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="s2">&quot;./1ZoneUncontrolled_win_1out.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date_parser</span><span class="o">=</span><span class="n">eprad</span><span class="o">.</span><span class="n">ep_datetime_parser</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span>
+</code></pre></div>
+<p>Plot data on 07/21</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">df_0721</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;1900-07-21&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>Plot Window Transmitted Solar Radiation Rate. From 11:00 to 15:00, the window is shaded, where the fenestration construction is Generic Clear Glass_Satine 5500 5%, White Pearl. Otherwise, the window is unshaded, where the fenestration construction is Generic Clear Glass. The drop in transmitted solar radiation from 11:00 to 15:00 reflects the change in fenestration state from unshaded to shaded.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">df_0721</span><span class="p">[</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="s2">&quot;ZN001:WALL001:WIN001:Surface Window Transmitted Solar Radiation Rate [W](TimeStep)&quot;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot; Window Transmitted Solar Radiation Rate [W]&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:xlabel=&#39;Date/Time&#39;, ylabel=&#39; Window Transmitted Solar Radiation Rate [W]&#39;&gt;
+</code></pre></div>
+<p><img alt="png" src="output_43_1.png" /></p>
+<p>Plot lighting electricity rate. The light is linearly dimmed in response to the workplane illuminance. Before the sunrise and after the sunset, the light is in full power. Then, in the morning from 5:30 to 11:00, when the window is unshaded, the lighting power decreases as the workplane illuminance increases; likewise inversely happened in the afternoon from 15:00 until the sunset. From 11:00 to 15:00, the lighting power is higher because the workplane illuminance decreases with the window changed to shaded.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">df_0721</span><span class="p">[</span><span class="s2">&quot;LIGHT_ZONE ONE:Lights Electricity Rate [W](TimeStep)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Lights Electricity Rate [W]&quot;</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:xlabel=&#39;Date/Time&#39;, ylabel=&#39;Lights Electricity Rate [W]&#39;&gt;
+</code></pre></div>
+<p><img alt="png" src="output_45_1.png" /></p>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>
