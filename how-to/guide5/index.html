@@ -869,23 +869,28 @@
 
 <h1 id="how-to-control-cfs-and-lighting-in-e-model">How to control CFS and lighting in E+ Model?</h1>
 <h2 id="import-required-python-libraries">Import required Python libraries</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">datetime</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">json</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">os</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">sys</span> 
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span> <span class="nn">frads</span> <span class="kn">import</span> <span class="n">epjson2rad</span><span class="p">,</span> <span class="n">eprad</span><span class="p">,</span> <span class="n">parsers</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">methods</span><span class="p">,</span> <span class="n">sky</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">window</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">sys</span> 
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">frads</span> <span class="kn">import</span> <span class="n">epjson2rad</span><span class="p">,</span> <span class="n">eprad</span><span class="p">,</span> <span class="n">parsers</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">methods</span><span class="p">,</span> <span class="n">sky</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">window</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </code></pre></div>
-<p>Need to make sure EnergyPlus is in sys.path in order to load <code> pyenergyplus.api </code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>srcloc = {&#39;win32&#39;: &#39;C:\\&#39;, &#39;darwin&#39;: &#39;/Applications&#39;, &#39;linux&#39;: &#39;/usr/local&#39;}
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>dname  = [os.path.join(srcloc[sys.platform], d) for d in os.listdir(srcloc[sys.platform]) if d.startswith(&#39;EnergyPlus&#39;)]
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>ephome = dname.pop()
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>if ephome not in sys.path:
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    sys.path.append(ephome)
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You'll need to install <a href="https://www.energyplus.net">EnergyPlus</a> befor proceeding.</p>
+</div>
+<p>Importing EnergyPlus into Python is not so straightforward. You can run the following code
+to import EnergyPlusAPI in you had installed EnergyPlus in the default location for your
+operating system. If you had not installed EnergyPlus one of these location you'll need to 
+<code>append</code> the path to your <code>sys.path</code> before you can import EnergyPlusAPI. </p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">srcloc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;win32&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;darwin&#39;</span><span class="p">:</span> <span class="s1">&#39;/Applications&#39;</span><span class="p">,</span> <span class="s1">&#39;linux&#39;</span><span class="p">:</span> <span class="s1">&#39;/usr/local&#39;</span><span class="p">}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">dname</span>  <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">srcloc</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">],</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">srcloc</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">])</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;EnergyPlus&#39;</span><span class="p">)]</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">ephome</span> <span class="o">=</span> <span class="n">dname</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">if</span> <span class="n">ephome</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ephome</span><span class="p">)</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>from pyenergyplus.api import EnergyPlusAPI
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kn">from</span> <span class="nn">pyenergyplus.api</span> <span class="kn">import</span> <span class="n">EnergyPlusAPI</span>
 </code></pre></div>
 <h2 id="load-energypluse-model">Load EnergyPlus(E+) model</h2>
 <p>The example idf file is from the EnergyPlus ExampleFiles directory. The building is 15.24m X 15.24m, single zone with one south-facing window.</p>
