@@ -8,22 +8,24 @@
       
       
       
+      
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.9">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.4">
     
     
       
-        <title>How to control CFS and lighting in E+ Model? - frads documentation</title>
+        <title>How to model dynamic shading control and daylight dimming with EnergyPlus? - frads documentation</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.1d29e8d0.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9c788c91.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
       
       
+
     
     
     
@@ -38,10 +40,11 @@
     
       <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -66,7 +69,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-control-cfs-and-lighting-in-e-model" class="md-skip">
+        <a href="#how-to-model-dynamic-shading-control-and-daylight-dimming-with-energyplus" class="md-skip">
           Skip to content
         </a>
       
@@ -99,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to control CFS and lighting in E+ Model?
+              How to model dynamic shading control and daylight dimming with EnergyPlus?
             
           </span>
         </div>
@@ -109,7 +112,6 @@
       <form class="md-header__option" data-md-component="palette">
         
           
-          
           <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
           
             <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
@@ -117,7 +119,6 @@
             </label>
           
         
-          
           
           <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
           
@@ -144,7 +145,7 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
         </button>
       </nav>
@@ -168,7 +169,7 @@
         <a href="https://github.com/LBNL-ETA/frads/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -213,7 +214,7 @@
       <a href="https://github.com/LBNL-ETA/frads/" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     GitHub
@@ -251,8 +252,9 @@
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
         
@@ -297,8 +299,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
       
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
       
       
         
@@ -376,8 +379,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
       
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
       
       
         
@@ -452,8 +456,9 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4" type="checkbox" id="__nav_2_3_4" >
       
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2_3_4" type="checkbox" id="__nav_2_3_4" >
       
       
         
@@ -688,8 +693,9 @@
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
         
@@ -734,8 +740,9 @@
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
         
@@ -794,6 +801,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    Objective
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#workflow" class="md-nav__link">
+    Workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#import-required-python-libraries" class="md-nav__link">
     Import required Python libraries
   </a>
@@ -808,44 +836,112 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#example-1-shading-control-and-daylight-dimming" class="md-nav__link">
+    Example 1 - shading control and daylight dimming
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 1 - shading control and daylight dimming">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#add-cfs-objects-to-e-model" class="md-nav__link">
     Add CFS objects to E+ model
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#add-lighting-objects-to-e-model" class="md-nav__link">
     Add lighting objects to E+ model
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#request-output-variable" class="md-nav__link">
+    Request output  variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#initialize-radiance-model" class="md-nav__link">
     Initialize Radiance model
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#define-controller-function-for-cfs-construction-states-and-daylight-dimming" class="md-nav__link">
-    Define controller function for CFS construction states and daylight dimming
+        
+          <li class="md-nav__item">
+  <a href="#define-controller-function-for-shading-control-and-daylight-dimming" class="md-nav__link">
+    Define controller function for shading control and daylight dimming
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#initialize-pyenergyplusapi-to-simulate" class="md-nav__link">
     Initialize pyenergyplus.api to simulate
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#load-and-visualize-results" class="md-nav__link">
     Load and visualize results
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-implementation" class="md-nav__link">
+    Check implementation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-2-electrochromic-glass-with-4-tinted-states" class="md-nav__link">
+    Example 2 - electrochromic glass with 4 tinted states
+  </a>
+  
+    <nav class="md-nav" aria-label="Example 2 - electrochromic glass with 4 tinted states">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-4-tinted-electrochromic-states-to-e-model" class="md-nav__link">
+    Add 4 tinted electrochromic states to E+ model
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#define-controller-function-for-the-ec-states" class="md-nav__link">
+    Define controller function for the EC states
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#initialize-pyenergyplusapi-to-simulate_1" class="md-nav__link">
+    Initialize pyenergyplus.api to simulate
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#load-and-visualize-results_1" class="md-nav__link">
+    Load and visualize results
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -857,228 +953,496 @@
               </div>
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
-  <a href="https://github.com/LBNL-ETA/frads/edit/master/docs/how-to/guide5.md" title="Edit this page" class="md-content__button md-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
+                  
+
+  
+  
 
 
 
-<h1 id="how-to-control-cfs-and-lighting-in-e-model">How to control CFS and lighting in E+ Model?</h1>
+<h1 id="how-to-model-dynamic-shading-control-and-daylight-dimming-with-energyplus">How to model dynamic shading control and daylight dimming with EnergyPlus?</h1>
+<h2 id="objective">Objective</h2>
+<p>This notebook shows how to use EnergyPlusAPI to control the complex fenestration system (CFS) state and implement daylight dimming.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>In order to run this notebook, you will need to install the following:</p>
+<ul>
+<li><a href="https://energyplus.net/">EnergyPlus</a> to simulate building energy.</li>
+<li><a href="https://github.com/LBNL-ETA/frads">frads</a> to initialize EnergyPlus model, and to create cfs and daylighting dimming controls.</li>
+</ul>
+<p>Optional:</p>
+<ul>
+<li><a href="https://pandas.pydata.org/docs/getting_started/install.html">pandas</a> and <a href="https://matplotlib.org/stable/users/installing/index.html">matplotlib</a> to analyze and plot data.</li>
+</ul>
+<p>You will also need an EnergyPlus model in an idf or epjson file format. The model should contain the following:</p>
+<ul>
+<li>at least one zone</li>
+<li>at least one fenestration system</li>
+</ul>
+<h2 id="workflow">Workflow</h2>
+<ol>
+<li>Initialize an E+ model with an input of idf or epjs file.</li>
+<li>Create Complex Fenestration System (CFS) glazing system for each fenestration construction state and add to E+ model</li>
+<li>Create lighting objects and add to E+ model</li>
+<li>Define controller function for CFS construction states and daylight dimming</li>
+<li>Initialize pyenergyplus.api to simulate</li>
+</ol>
+<pre class="mermaid"><code>graph LR
+    subgraph pyenergyplus.api simulation
+    D[Radiance model]&lt;--&gt;B[EPmodel];
+    B&lt;--&gt;H[controller function]
+    H&lt;--&gt;D;
+    end
+    A[idf/epjs] --&gt; |load epmodel| B;
+    C[lighting system] --&gt; B;
+    E[glazing/shading system]--&gt; B;</code></pre>
+<pre class="mermaid"><code>graph LR
+    subgraph frads
+    B[WincalcEngine]
+    C[EnergyPlus]
+    D[Radiance]
+    end
+
+    A[IGSDB] --&gt; B;
+    B --&gt; D;
+    B --&gt; C;
+    C &lt;--&gt;D</code></pre>
 <h2 id="import-required-python-libraries">Import required Python libraries</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">os</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">sys</span> 
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">frads</span> <span class="kn">import</span> <span class="n">epjson2rad</span><span class="p">,</span> <span class="n">eprad</span><span class="p">,</span> <span class="n">parsers</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">methods</span><span class="p">,</span> <span class="n">sky</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">window</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span> <span class="nn">sys</span> 
+
+<span class="kn">from</span> <span class="nn">frads</span> <span class="kn">import</span> <span class="n">epjson2rad</span><span class="p">,</span> <span class="n">eprad</span><span class="p">,</span> <span class="n">parsers</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="n">methods</span><span class="p">,</span> <span class="n">sky</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">window</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You'll need to install <a href="https://www.energyplus.net">EnergyPlus</a> befor proceeding.</p>
-</div>
+<p>!!! note
+    You'll need to install <a href="https://www.energyplus.net">EnergyPlus</a> before proceeding.</p>
 <p>Importing EnergyPlus into Python is not so straightforward. You can run the following code
-to import EnergyPlusAPI in you had installed EnergyPlus in the default location for your
+to import EnergyPlusAPI if you had installed EnergyPlus in the default location for your
 operating system. If you had not installed EnergyPlus one of these location you'll need to 
 <code>append</code> the path to your <code>sys.path</code> before you can import EnergyPlusAPI. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">srcloc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;win32&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;darwin&#39;</span><span class="p">:</span> <span class="s1">&#39;/Applications&#39;</span><span class="p">,</span> <span class="s1">&#39;linux&#39;</span><span class="p">:</span> <span class="s1">&#39;/usr/local&#39;</span><span class="p">}</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">dname</span>  <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">srcloc</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">],</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">srcloc</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">])</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;EnergyPlus&#39;</span><span class="p">)]</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">ephome</span> <span class="o">=</span> <span class="n">dname</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">if</span> <span class="n">ephome</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ephome</span><span class="p">)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="kn">from</span> <span class="nn">pyenergyplus.api</span> <span class="kn">import</span> <span class="n">EnergyPlusAPI</span>
+<div class="highlight"><pre><span></span><code><span class="n">srcloc</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;win32&#39;</span><span class="p">:</span> <span class="s1">&#39;C:</span><span class="se">\\</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;darwin&#39;</span><span class="p">:</span> <span class="s1">&#39;/Applications&#39;</span><span class="p">,</span> <span class="s1">&#39;linux&#39;</span><span class="p">:</span> <span class="s1">&#39;/usr/local&#39;</span><span class="p">}</span>
+<span class="n">dname</span>  <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">srcloc</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">],</span> <span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">srcloc</span><span class="p">[</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">])</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;EnergyPlus&#39;</span><span class="p">)]</span>
+<span class="n">ephome</span> <span class="o">=</span> <span class="n">dname</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">ephome</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ephome</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">pyenergyplus.api</span> <span class="kn">import</span> <span class="n">EnergyPlusAPI</span>
 </code></pre></div>
 <h2 id="load-energypluse-model">Load EnergyPlus(E+) model</h2>
 <p>The example idf file is from the EnergyPlus ExampleFiles directory. The building is 15.24m X 15.24m, single zone with one south-facing window.</p>
-<p>Initialize an E+ model by calling <code> eprad.load_epmodel </code> with an input of idf or epjs file.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">idf_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;1ZoneUncontrolled_win_1.idf&quot;</span><span class="p">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">api</span> <span class="o">=</span> <span class="n">EnergyPlusAPI</span><span class="p">()</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">epmodel</span> <span class="o">=</span> <span class="n">eprad</span><span class="o">.</span><span class="n">load_epmodel</span><span class="p">(</span><span class="n">idf_path</span><span class="p">,</span> <span class="n">api</span><span class="p">)</span>
+<p>Initialize an E+ model by calling <code>eprad.load_epmodel</code>with an input of idf or epjs file. The example used here can be downloaded from <a href="https://github.com/NREL/EnergyPlus/blob/develop/testfiles/1ZoneUncontrolled_win_1.idf">here</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">idf_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;1ZoneUncontrolled_win_1.idf&quot;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">EnergyPlusAPI</span><span class="p">()</span>
+<span class="n">epmodel</span> <span class="o">=</span> <span class="n">eprad</span><span class="o">.</span><span class="n">load_epmodel</span><span class="p">(</span><span class="n">idf_path</span><span class="p">,</span> <span class="n">api</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="add-cfs-objects-to-e-model">Add CFS objects to E+ model</h2>
-<p>Create an unshaded glazing system, consisted of one layer of 6mm clear glass. Initialize a glazing system by calling <code> window.GlazingSystem()</code>. Then, use <code> add_glazing_layer</code>  and <code> add_shading_layer</code> respectively, to add glazing and shading layer to the glazing system. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">gs_unshaded</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">gs_unshaded</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_6.DAT&quot;</span><span class="p">)</span>
+<h2 id="example-1-shading-control-and-daylight-dimming">Example 1 - shading control and daylight dimming</h2>
+<h3 id="add-cfs-objects-to-e-model">Add CFS objects to E+ model</h3>
+<p>Initialize a glazing system by calling <code>window.GlazingSystem()</code>. Then, use <code>add_glazing_layer</code> and <code>add_shading_layer</code>respectively, to add glazing and shading layer to the glazing system. <code>add_glazing_layer</code> takes in a <code>.dat</code> or <code>.json</code> file. <code>add_shading_layer</code> takes in a <code>.xml</code> file. Visit the <a href="https://igsdb.lbl.gov/">IGSDB</a> website to download  <code>.json</code> files for glazing and <code>.xml</code> files for shading. If not specify, the default gap between the layers is air at 0.0127m thickness. See <a href="#example-2-electrochromic-glass-with-4-tinted-states">Example 2</a> for how to customize a gap.</p>
+<p>Create an unshaded glazing system, consisted of one layer of 6mm clear glass with the default gap. </p>
+<div class="highlight"><pre><span></span><code><span class="n">gs_unshaded</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
+<span class="n">gs_unshaded</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_6.DAT&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>This is how you get the name of the glazing system.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">gs_unshaded</span><span class="o">.</span><span class="n">name</span>
+<div class="highlight"><pre><span></span><code><span class="n">gs_unshaded</span><span class="o">.</span><span class="n">name</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&#39;Generic Clear Glass&#39;
-</code></pre></div>
+<pre><code>'Generic Clear Glass'
+</code></pre>
 <p>Create a shaded glazing system, consisted of one layer of 6mm clear glass and one layer of shading: 2011-SA1.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">gs_shaded</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">gs_shaded</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_6.DAT&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">gs_shaded</span><span class="o">.</span><span class="n">add_shading_layer</span><span class="p">(</span><span class="s2">&quot;products/2011-SA1.XML&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">gs_shaded</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
+<span class="n">gs_shaded</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_6.DAT&quot;</span><span class="p">)</span>
+<span class="n">gs_shaded</span><span class="o">.</span><span class="n">add_shading_layer</span><span class="p">(</span><span class="s2">&quot;products/2011-SA1.XML&quot;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">gs_shaded</span><span class="o">.</span><span class="n">name</span>
+<div class="highlight"><pre><span></span><code><span class="n">gs_shaded</span><span class="o">.</span><span class="n">name</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&#39;Generic Clear Glass_Satine 5500 5%, White Pearl&#39;
+<pre><code>'Generic Clear Glass_Satine 5500 5%, White Pearl'
+</code></pre>
+<p>After the adding glazing and shading layers to the glazing system, compute solar and the solar and photopic results using <code>compute_solar_photopic_results</code>. Need to re-compute each time when the glazing system layering composition changes.</p>
+<div class="highlight"><pre><span></span><code><span class="n">gs_unshaded</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
 </code></pre></div>
-<p>After the adding glazing and shading layers to the glazing system, compute solar and the solar and photopic results using <code> compute_solar_photopic_results</code>. Need to re-compute each time when the glazing system layering composition changes.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">gs_unshaded</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">gs_shaded</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">gs_shaded</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
 </code></pre></div>
 <p>Add the unshaded and shaded glazing systems to E+ model by calling <code>add_cfs</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_unshaded</span><span class="p">)</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_shaded</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_unshaded</span><span class="p">)</span>
+<span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_shaded</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="add-lighting-objects-to-e-model">Add lighting objects to E+ model</h2>
-<p>Use <code>add_lighting</code> to add a lighting object for each of the zones in the building.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">add_lighting</span><span class="p">()</span>
+<h3 id="add-lighting-objects-to-e-model">Add lighting objects to E+ model</h3>
+<p>Use <code>add_lighting</code>to add a lighting object for each of the zones in the building.</p>
+<div class="highlight"><pre><span></span><code><span class="n">epmodel</span><span class="o">.</span><span class="n">add_lighting</span><span class="p">()</span>
 </code></pre></div>
 <p>This is a list of attributes of the EPModel class</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">windows</span>
+<div class="highlight"><pre><span></span><code><span class="n">epmodel</span><span class="o">.</span><span class="n">windows</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>[&#39;Zn001:Wall001:Win001&#39;]
+<pre><code>['Zn001:Wall001:Win001']
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">epmodel</span><span class="o">.</span><span class="n">cfs</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">cfs</span>
+<pre><code>['Generic Clear Glass', 'Generic Clear Glass_Satine 5500 5%, White Pearl']
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">epmodel</span><span class="o">.</span><span class="n">lighting_zone</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>[&#39;Generic Clear Glass&#39;, &#39;Generic Clear Glass_Satine 5500 5%, White Pearl&#39;]
+<pre><code>['Light_ZONE ONE']
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">epmodel</span><span class="o">.</span><span class="n">zones</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">lighting_zone</span>
+<pre><code>['ZONE ONE']
+</code></pre>
+<h3 id="request-output-variable">Request output  variable</h3>
+<p>Use <code>request_output</code>to request output variable that are not in the input  idf file before the simulation run.
+<div class="highlight"><pre><span></span><code><span class="n">epmodel</span><span class="o">.</span><span class="n">request_output</span><span class="p">(</span><span class="s2">&quot;Surface Inside Face Solar Radiation Heat Gain Rate per Area&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<h3 id="initialize-radiance-model">Initialize Radiance model</h3>
+<p>Create a Radiance model by calling <code>epjson2rad.epjson2rad</code>and passing in an epjs and epw files. The epjs file can be accessed by calling <code>epmodel.epjs</code>. The <code>epjson2rad.epjson2rad</code>function creates an <code>Objects</code>directory for material and geometry primitives and a <code>Resources</code>directory for transmission matrices (xml files). The <code>epjson2rad.epjson2rad</code>function also generates a <code>config</code>file, which contains information about simulation controls setting, site, model, and raysender. Use <code>methods.three_phase</code>to perform the three-phase method and generate the view and daylight matrices under the <code>Matrices</code>directory. Finally, load the view, daylight, and transmission matrices with <code>load_matrix</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">zone</span> <span class="o">=</span> <span class="n">epmodel</span><span class="o">.</span><span class="n">zones</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">floor</span> <span class="o">=</span> <span class="n">epmodel</span><span class="o">.</span><span class="n">floors</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">wall_wndo</span> <span class="o">=</span> <span class="n">epmodel</span><span class="o">.</span><span class="n">walls_window</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># generate Radiance model</span>
+<span class="c1"># generate view, daylight, and transmission matrices</span>
+<span class="n">epjson2rad</span><span class="o">.</span><span class="n">epjson2rad</span><span class="p">(</span><span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">,</span> <span class="n">epw</span><span class="o">=</span><span class="s2">&quot;USA_CA_Oakland.Intl.AP.724930_TMY3.epw&quot;</span><span class="p">)</span>
+<span class="n">cfg_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">zone</span><span class="si">}</span><span class="s2">.cfg&quot;</span><span class="p">)</span>
+<span class="n">config</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">parse_mrad_config</span><span class="p">(</span><span class="n">cfg_file</span><span class="p">)</span>
+<span class="n">config</span><span class="p">[</span><span class="s2">&quot;SimControl&quot;</span><span class="p">][</span><span class="s2">&quot;no_multiply&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
+<span class="k">with</span> <span class="n">methods</span><span class="o">.</span><span class="n">assemble_model</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
+    <span class="n">mpath</span> <span class="o">=</span> <span class="n">methods</span><span class="o">.</span><span class="n">three_phase</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+
+<span class="c1"># load matrices</span>
+<span class="n">vmx_window1</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">mpath</span><span class="o">.</span><span class="n">pvmx</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">floor</span><span class="si">}{</span><span class="n">wall_wndo</span><span class="si">}</span><span class="s2">_window&quot;</span><span class="p">])</span>
+<span class="n">dmx_window1</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">mpath</span><span class="o">.</span><span class="n">dmx</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">wall_wndo</span><span class="si">}</span><span class="s2">_window&quot;</span><span class="p">])</span>
+<span class="n">tmx_unshaded</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resources/Generic Clear Glass.xml&quot;</span><span class="p">)</span>
+<span class="n">tmx_shaded</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resources/Generic Clear Glass_Satine 5500 5%, White Pearl.xml&quot;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>[&#39;Light_ZONE ONE&#39;]
+<h3 id="define-controller-function-for-shading-control-and-daylight-dimming">Define controller function for shading control and daylight dimming</h3>
+<p>Control fenestration construction based on time; the window is shaded from 11:00 to 15:00; otherwise, unshaded. The nominal lighting power of the light is 30W, controlled with linear daylight dimming based on the workplane illuminance. The workplane illuminance at each timestep is computed by calling <code>matrix.multiply_rgb</code>and passing in the view, trasmission, daylight, and sky matrices. Sky matrix is generated by calling <code>sky.genskymtx</code>and passing in a <code>WeaData</code>and <code>WeaMetaData</code>objects.</p>
+<p>Data is accessed through handles, which can be accessed by calling the <code>handles</code>attribute of the <code>EnergyPlusSetup</code>class.  Call <code>get_variable_value</code>and pass in a variable handle to get a variable value (e.g. Direct normal irradiance and diffuse horizontal irradiance). Call <code>actuate</code>and pass in an actuactor handle and value to set the actuator value.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">controller</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">nominal_lighting_power</span> <span class="o">=</span> <span class="mi">30</span>
+
+    <span class="n">shade_names</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Generic Clear Glass&quot;</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Generic Clear Glass_Satine 5500 5%, White Pearl&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">()</span>
+    <span class="n">direct_normal_irradiance</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_variable_value</span><span class="p">(</span>
+        <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">direct_normal_irradiance</span>
+    <span class="p">)</span>
+    <span class="n">diffuse_horizontal_irradiance</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_variable_value</span><span class="p">(</span>
+        <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">diffuse_horizontal_irradiance</span>
+    <span class="p">)</span>
+
+    <span class="c1">## control CFS construction</span>
+    <span class="n">window_handle</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">window_actuators</span><span class="p">[</span><span class="s2">&quot;Zn001:Wall001:Win001&quot;</span><span class="p">]</span>
+
+    <span class="c1"># change the fenestration to shaded</span>
+    <span class="k">if</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
+        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">tmx</span> <span class="o">=</span> <span class="n">tmx_shaded</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">tmx</span> <span class="o">=</span> <span class="n">tmx_unshaded</span>
+
+    <span class="n">ep</span><span class="o">.</span><span class="n">actuate</span><span class="p">(</span>
+        <span class="n">window_handle</span><span class="p">,</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">complex_fenestration_state</span><span class="p">[</span><span class="n">shade_names</span><span class="p">[</span><span class="n">_shades</span><span class="p">]]</span>
+    <span class="p">)</span>
+
+    <span class="c1">## control lights</span>
+    <span class="n">light_handle</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">light_actuators</span><span class="p">[</span><span class="s2">&quot;Light_ZONE ONE&quot;</span><span class="p">]</span>
+
+    <span class="c1"># create WeaData object to create smx</span>
+    <span class="n">weadata</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">WeaData</span><span class="p">(</span>
+        <span class="n">time</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">dni</span><span class="o">=</span><span class="n">direct_normal_irradiance</span><span class="p">,</span> <span class="n">dhi</span><span class="o">=</span><span class="n">diffuse_horizontal_irradiance</span>
+    <span class="p">)</span>
+    <span class="c1"># initialize sky/sun matrix</span>
+    <span class="n">smx</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">sky</span><span class="o">.</span><span class="n">genskymtx</span><span class="p">([</span><span class="n">weadata</span><span class="p">],</span> <span class="n">meta</span><span class="p">,</span> <span class="n">mfactor</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
+    <span class="c1"># get workplane illuminance</span>
+    <span class="n">wpi</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">multiply_rgb</span><span class="p">(</span><span class="n">vmx_window1</span><span class="p">,</span> <span class="n">tmx</span><span class="p">,</span> <span class="n">dmx_window1</span><span class="p">,</span> <span class="n">smx</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">47.4</span><span class="p">,</span> <span class="mf">119.9</span><span class="p">,</span> <span class="mf">11.6</span><span class="p">])</span>
+    <span class="n">avg_wpi</span> <span class="o">=</span> <span class="n">wpi</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+    <span class="c1"># lighting power, assuming linear dimming curve</span>
+    <span class="n">lighting_power</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">avg_wpi</span> <span class="o">/</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">nominal_lighting_power</span>
+
+    <span class="n">ep</span><span class="o">.</span><span class="n">actuate</span><span class="p">(</span><span class="n">light_handle</span><span class="p">,</span> <span class="n">lighting_power</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">epmodel</span><span class="o">.</span><span class="n">zones</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>[&#39;ZONE ONE&#39;]
-</code></pre></div>
-<h2 id="initialize-radiance-model">Initialize Radiance model</h2>
-<p>Create a Radiance model by calling <code>epjson2rad.epjson2rad</code> and passing in an epjs and epw files. The epjs file can be accessed by calling <code>epmodel.epjs</code>. The <code>epjson2rad.epjson2rad</code> function creates an <code>Objects</code> directory for material and geometry primitives and a <code>Resources</code> directory for transmission matrices (xml files). The <code>epjson2rad.epjson2rad</code> function also generates a <code>config</code> file, which contains information about simulation controls setting, site, model, and raysender. Use <code>methods.three_phase</code> to perform the three-phase method and generate the view and daylight matrices under the <code>Matrices</code> directory. Finally, load the view, daylight, and transmission matrices with <code>load_matrix</code>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">zone</span> <span class="o">=</span> <span class="s2">&quot;ZONE_ONE&quot;</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">floor</span> <span class="o">=</span> <span class="s2">&quot;Zn001:Flr001&quot;</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">wall_wndo</span> <span class="o">=</span> <span class="s2">&quot;Zn001:Wall001&quot;</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># generate Radiance model</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="c1"># generate view, daylight, and transmission matrices</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">epjson2rad</span><span class="o">.</span><span class="n">epjson2rad</span><span class="p">(</span><span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">,</span> <span class="n">epw</span><span class="o">=</span><span class="s2">&quot;USA_CA_Oakland.Intl.AP.724930_TMY3.epw&quot;</span><span class="p">)</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="n">cfg_file</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">zone</span><span class="si">}</span><span class="s2">.cfg&quot;</span><span class="p">)</span>
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="n">config</span> <span class="o">=</span> <span class="n">parsers</span><span class="o">.</span><span class="n">parse_mrad_config</span><span class="p">(</span><span class="n">cfg_file</span><span class="p">)</span>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="n">config</span><span class="p">[</span><span class="s2">&quot;SimControl&quot;</span><span class="p">][</span><span class="s2">&quot;no_multiply&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;true&quot;</span>
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="k">with</span> <span class="n">methods</span><span class="o">.</span><span class="n">assemble_model</span><span class="p">(</span><span class="n">config</span><span class="p">)</span> <span class="k">as</span> <span class="n">model</span><span class="p">:</span>
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>    <span class="n">mpath</span> <span class="o">=</span> <span class="n">methods</span><span class="o">.</span><span class="n">three_phase</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="c1"># load matrices</span>
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="n">vmx_window1</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">mpath</span><span class="o">.</span><span class="n">pvmx</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">floor</span><span class="si">}{</span><span class="n">wall_wndo</span><span class="si">}</span><span class="s2">_window&quot;</span><span class="p">])</span>
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="n">dmx_window1</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">mpath</span><span class="o">.</span><span class="n">dmx</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">wall_wndo</span><span class="si">}</span><span class="s2">_window&quot;</span><span class="p">])</span>
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="n">tmx_unshaded</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resources/Generic Clear Glass.xml&quot;</span><span class="p">)</span>
-<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="n">tmx_shaded</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Resources/Generic Clear Glass_Satine 5500 5%, White Pearl.xml&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="define-controller-function-for-cfs-construction-states-and-daylight-dimming">Define controller function for CFS construction states and daylight dimming</h2>
-<p>Control fenestration construction based on time; the window is shaded from 11:00 to 15:00; otherwise, unshaded. The nominal lighting power of the light is 30W, controlled with linear daylight dimming based on the workplane illuminance. The workplane illuminance at each timestep is computed by calling <code>matrix.multiply_rgb</code> and pass in the view, trasmission, daylight, and sky matrices. Sky matrix is generated by calling <code>sky.genskymtx</code> and passing in a <code>WeaData</code> and <code>WeaMetaData</code> objects.</p>
-<p>Data is accessed through handles, which can be accessed by calling the <code>handles</code> attribute of the <code> EnergyPlusSetup</code> class.  Call <code>get_variable_value</code> and pass in a variable handle to get a variable value (e.g. Direct normal irradiance and diffuse horizontal irradiance). Call <code>actuate</code> and pass in an actuactor handle and value to set the actuator value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="k">def</span> <span class="nf">controller</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>    <span class="n">dni_thld</span> <span class="o">=</span> <span class="mi">800</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">nominal_lighting_power</span> <span class="o">=</span> <span class="mi">30</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="n">shade_names</span> <span class="o">=</span> <span class="p">{</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>        <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;Generic Clear Glass&quot;</span><span class="p">,</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;Generic Clear Glass_Satine 5500 5%, White Pearl&quot;</span><span class="p">,</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="p">}</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>    <span class="n">dt</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">()</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    <span class="n">direct_normal_irradiance</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_variable_value</span><span class="p">(</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>        <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">direct_normal_irradiance</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="p">)</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    <span class="n">diffuse_horizontal_irradiance</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_variable_value</span><span class="p">(</span>
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>        <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">diffuse_horizontal_irradiance</span>
-<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>    <span class="p">)</span>
-<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
-<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>    <span class="c1">## control CFS construction</span>
-<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>    <span class="n">window_handle</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">window_actuators</span><span class="p">[</span><span class="s2">&quot;Zn001:Wall001:Win001&quot;</span><span class="p">]</span>
-<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
-<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>    <span class="c1"># change the fenestration to shaded</span>
-<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>    <span class="k">if</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="ow">and</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">15</span><span class="p">:</span>
-<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">1</span>
-<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>        <span class="n">tmx</span> <span class="o">=</span> <span class="n">tmx_shaded</span>
-<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>        <span class="n">tmx</span> <span class="o">=</span> <span class="n">tmx_unshaded</span>
-<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>
-<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a>    <span class="n">ep</span><span class="o">.</span><span class="n">actuate</span><span class="p">(</span>
-<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a>        <span class="n">window_handle</span><span class="p">,</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">complex_fenestration_state</span><span class="p">[</span><span class="n">shade_names</span><span class="p">[</span><span class="n">_shades</span><span class="p">]]</span>
-<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a>    <span class="p">)</span>
-<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a>
-<a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a>    <span class="c1">## control lights</span>
-<a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>    <span class="n">light_handle</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">light_actuators</span><span class="p">[</span><span class="s2">&quot;Light_ZONE ONE&quot;</span><span class="p">]</span>
-<a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a>
-<a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a>    <span class="c1"># create WeaData object to create smx</span>
-<a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a>    <span class="n">weadata</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">WeaData</span><span class="p">(</span>
-<a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a>        <span class="n">time</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">dni</span><span class="o">=</span><span class="n">direct_normal_irradiance</span><span class="p">,</span> <span class="n">dhi</span><span class="o">=</span><span class="n">diffuse_horizontal_irradiance</span>
-<a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a>    <span class="p">)</span>
-<a id="__codelineno-16-40" name="__codelineno-16-40" href="#__codelineno-16-40"></a>    <span class="c1"># initialize sky/sun matrix</span>
-<a id="__codelineno-16-41" name="__codelineno-16-41" href="#__codelineno-16-41"></a>    <span class="n">smx</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">load_matrix</span><span class="p">(</span><span class="n">sky</span><span class="o">.</span><span class="n">genskymtx</span><span class="p">([</span><span class="n">weadata</span><span class="p">],</span> <span class="n">meta</span><span class="p">,</span> <span class="n">mfactor</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
-<a id="__codelineno-16-42" name="__codelineno-16-42" href="#__codelineno-16-42"></a>    <span class="c1"># get workplane illuminance</span>
-<a id="__codelineno-16-43" name="__codelineno-16-43" href="#__codelineno-16-43"></a>    <span class="n">wpi</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">multiply_rgb</span><span class="p">(</span><span class="n">vmx_window1</span><span class="p">,</span> <span class="n">tmx</span><span class="p">,</span> <span class="n">dmx_window1</span><span class="p">,</span> <span class="n">smx</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">47.4</span><span class="p">,</span> <span class="mf">119.9</span><span class="p">,</span> <span class="mf">11.6</span><span class="p">])</span>
-<a id="__codelineno-16-44" name="__codelineno-16-44" href="#__codelineno-16-44"></a>    <span class="n">avg_wpi</span> <span class="o">=</span> <span class="n">wpi</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<a id="__codelineno-16-45" name="__codelineno-16-45" href="#__codelineno-16-45"></a>
-<a id="__codelineno-16-46" name="__codelineno-16-46" href="#__codelineno-16-46"></a>    <span class="c1"># lighting power, assuming linear dimming curve</span>
-<a id="__codelineno-16-47" name="__codelineno-16-47" href="#__codelineno-16-47"></a>    <span class="n">lighting_power</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">avg_wpi</span> <span class="o">/</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">nominal_lighting_power</span>
-<a id="__codelineno-16-48" name="__codelineno-16-48" href="#__codelineno-16-48"></a>
-<a id="__codelineno-16-49" name="__codelineno-16-49" href="#__codelineno-16-49"></a>    <span class="n">ep</span><span class="o">.</span><span class="n">actuate</span><span class="p">(</span><span class="n">light_handle</span><span class="p">,</span> <span class="n">lighting_power</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="initialize-pyenergyplusapi-to-simulate">Initialize pyenergyplus.api to simulate</h2>
-<p>Register the controller functions to be call back by EnergyPlus by calling <code>set_callback</code> and passing in a callback point and function. To simulate, use <code>run</code> with optional parameters: <code>-w</code> weather file, <code>-d</code> output directory, and <code>-p</code> output prefix (default: eplus).</p>
+<h3 id="initialize-pyenergyplusapi-to-simulate">Initialize pyenergyplus.api to simulate</h3>
+<p>Register the controller functions to be call back by EnergyPlus by calling <code>set_callback</code>and passing in a callback point and function. To simulate, use <code>run</code>with optional parameters: <code>-w</code>weather file, <code>-d</code>output directory, and <code>-p</code>output prefix (default: eplus).</p>
 <p>Refer to <a href="https://energyplus.net/assets/nrel_custom/pdfs/pdfs_v22.1.0/EMSApplicationGuide.pdf">Application Guide for EMS</a> for descriptions of the calling points .</p>
-<div class="highlight"><pre><span></span><code>&quot;The calling point called “BeginTimestepBeforePredictor” occurs near the beginning of each timestep
+<pre><code>"The calling point called “BeginTimestepBeforePredictor” occurs near the beginning of each timestep
 but before the predictor executes. “Predictor” refers to the step in EnergyPlus modeling when the
 zone loads are calculated. This calling point is useful for controlling components that affect the
 thermal loads the HVAC systems will then attempt to meet. Programs called from this point
 might actuate internal gains based on current weather or on the results from the previous timestep.
 Demand management routines might use this calling point to reduce lighting or process loads,
-change thermostat settings, etc.&quot;
+change thermostat settings, etc."
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">eprad</span><span class="o">.</span><span class="n">EnergyPlusSetup</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">)</span> <span class="k">as</span> <span class="n">ep</span><span class="p">:</span>
+
+    <span class="c1"># create WeaMetaData object to create smx</span>
+    <span class="n">loc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">[</span><span class="s2">&quot;Site:Location&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">meta</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">WeaMetaData</span><span class="p">(</span>
+        <span class="n">city</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">country</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+        <span class="n">elevation</span><span class="o">=</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">],</span>
+        <span class="n">latitude</span><span class="o">=</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
+        <span class="n">longitude</span><span class="o">=</span><span class="mi">0</span> <span class="o">-</span> <span class="n">loc</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
+        <span class="n">timezone</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">loc</span><span class="p">[</span><span class="s2">&quot;time_zone&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">ep</span><span class="o">.</span><span class="n">set_callback</span><span class="p">(</span><span class="s2">&quot;callback_begin_system_timestep_before_predictor&quot;</span><span class="p">,</span> <span class="n">controller</span><span class="p">)</span>
+    <span class="n">ep</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">weather_file</span><span class="o">=</span><span class="s2">&quot;USA_CA_Oakland.Intl.AP.724930_TMY3.epw&quot;</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="s2">&quot;1ZoneUncontrolled_win_1&quot;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="k">with</span> <span class="n">eprad</span><span class="o">.</span><span class="n">EnergyPlusSetup</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">)</span> <span class="k">as</span> <span class="n">ep</span><span class="p">:</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="c1"># create WeaMetaData object to create smx</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>    <span class="n">loc</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">[</span><span class="s2">&quot;Site:Location&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">meta</span> <span class="o">=</span> <span class="n">types</span><span class="o">.</span><span class="n">WeaMetaData</span><span class="p">(</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>        <span class="n">city</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>        <span class="n">country</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>        <span class="n">elevation</span><span class="o">=</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;elevation&quot;</span><span class="p">],</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>        <span class="n">latitude</span><span class="o">=</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;latitude&quot;</span><span class="p">],</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="n">longitude</span><span class="o">=</span><span class="mi">0</span> <span class="o">-</span> <span class="n">loc</span><span class="p">[</span><span class="s2">&quot;longitude&quot;</span><span class="p">],</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="n">timezone</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">loc</span><span class="p">[</span><span class="s2">&quot;time_zone&quot;</span><span class="p">])</span> <span class="o">*</span> <span class="mi">15</span><span class="p">,</span>
-<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    <span class="p">)</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>
-<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="n">ep</span><span class="o">.</span><span class="n">set_callback</span><span class="p">(</span><span class="s2">&quot;callback_begin_system_timestep_before_predictor&quot;</span><span class="p">,</span> <span class="n">controller</span><span class="p">)</span>
-<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>    <span class="n">ep</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">weather_file</span><span class="o">=</span><span class="s2">&quot;USA_CA_Oakland.Intl.AP.724930_TMY3.epw&quot;</span><span class="p">,</span> <span class="n">output_prefix</span><span class="o">=</span><span class="s2">&quot;1ZoneUncontrolled_win_1&quot;</span><span class="p">)</span>
-</code></pre></div>
-<h2 id="load-and-visualize-results">Load and visualize results</h2>
-<p>Use <code>pd.read_csv</code> to read the output csv file.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="s2">&quot;./1ZoneUncontrolled_win_1out.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date_parser</span><span class="o">=</span><span class="n">eprad</span><span class="o">.</span><span class="n">ep_datetime_parser</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="p">)</span>
+<h3 id="load-and-visualize-results">Load and visualize results</h3>
+<p>Use <code>pd.read_csv</code>to read the output csv file.</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;./1ZoneUncontrolled_win_1out.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">date_parser</span><span class="o">=</span><span class="n">eprad</span><span class="o">.</span><span class="n">ep_datetime_parser</span>
+<span class="p">)</span>
 </code></pre></div>
 <p>Plot data on 07/21</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">df_0721</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;1900-07-21&quot;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">df_0721</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;1900-07-21&quot;</span><span class="p">]</span>
 </code></pre></div>
-<p>Plot Window Transmitted Solar Radiation Rate. From 11:00 to 15:00, the window is shaded, where the fenestration construction is Generic Clear Glass_Satine 5500 5%, White Pearl. Otherwise, the window is unshaded, where the fenestration construction is Generic Clear Glass. The drop in transmitted solar radiation from 11:00 to 15:00 reflects the change in fenestration state from unshaded to shaded.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">df_0721</span><span class="p">[</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>    <span class="s2">&quot;ZN001:WALL001:WIN001:Surface Window Transmitted Solar Radiation Rate [W](TimeStep)&quot;</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot; Window Transmitted Solar Radiation Rate [W]&quot;</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:xlabel=&#39;Date/Time&#39;, ylabel=&#39; Window Transmitted Solar Radiation Rate [W]&#39;&gt;
-</code></pre></div>
-<p><img alt="png" src="output_43_1.png" /></p>
-<p>Plot lighting electricity rate. The light is linearly dimmed in response to the workplane illuminance. Before the sunrise and after the sunset, the light is in full power. Then, in the morning from 5:30 to 11:00, when the window is unshaded, the lighting power decreases as the workplane illuminance increases; likewise inversely happened in the afternoon from 15:00 until the sunset. From 11:00 to 15:00, the lighting power is higher because the workplane illuminance decreases with the window changed to shaded.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">df_0721</span><span class="p">[</span><span class="s2">&quot;LIGHT_ZONE ONE:Lights Electricity Rate [W](TimeStep)&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Lights Electricity Rate [W]&quot;</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>&lt;AxesSubplot:xlabel=&#39;Date/Time&#39;, ylabel=&#39;Lights Electricity Rate [W]&#39;&gt;
-</code></pre></div>
-<p><img alt="png" src="output_45_1.png" /></p>
+<p>From 11:00 to 15:00, the window is shaded, where the fenestration construction is Generic Clear Glass_Satine 5500 5%, White Pearl. Otherwise, the window is unshaded, where the fenestration construction is Generic Clear Glass. The drop in transmitted solar radiation from 11:00 to 15:00 reflects the change in fenestration state from unshaded to shaded. The light is linearly dimmed in response to the workplane illuminance. Before the sunrise and after the sunset, the light is in full power. Then, in the morning from 5:30 to 11:00, when the window is unshaded, the lighting power decreases as the workplane illuminance increases; likewise inversely happened in the afternoon from 15:00 until the sunset. From 11:00 to 15:00, the lighting power is higher because the workplane illuminance decreases with the window changed to shaded.</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">df_0721</span><span class="p">[</span>
+        <span class="s2">&quot;ZN001:WALL001:WIN001:Surface Window Transmitted Solar Radiation Rate [W](TimeStep)&quot;</span>
+    <span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ZN001:WALL001:WIN001&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%H:%M&quot;</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">df_0721</span><span class="p">[</span><span class="s2">&quot;LIGHT_ZONE ONE:Lights Electricity Rate [W](TimeStep)&quot;</span><span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;LIGHT_ZONE ONE (right)&quot;</span><span class="p">,</span>
+<span class="p">)</span>
 
-              
-            </article>
-            
-          </div>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 11:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> 
+<span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 15:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">)),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;0.9&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Shaded&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 13:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> <span class="mi">2250</span><span class="p">),</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Unshaded&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 5:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> <span class="mi">2250</span><span class="p">),</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Unshaded&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 21:30&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> <span class="mi">2250</span><span class="p">),</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Window Transmitted Solar Radiation Rate [W]&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Lights Electricity Rate [W]&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="/assets/output_46_0.png" /></p>
+<p>Plot interior surfaces solar radiation heat gain rate per area</p>
+<div class="highlight"><pre><span></span><code><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">y_vals</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">col</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_0721</span><span class="o">.</span><span class="n">columns</span>
+    <span class="k">if</span> <span class="s2">&quot;Surface Inside Face Solar Radiation Heat Gain Rate per Area&quot;</span> <span class="ow">in</span> <span class="n">col</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">y_val</span> <span class="ow">in</span> <span class="n">y_vals</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">df_0721</span><span class="p">[</span><span class="n">y_val</span><span class="p">],</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">y_val</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:Surface&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%H:%M&quot;</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Solar Radiation Heat Gain Rate per Area [W/m2]&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="/assets/output_47_0.png" /></p>
+<h3 id="check-implementation">Check implementation</h3>
+<p>Check if the simulation is implemented correctly. Compare simulation results generated with the controller and no controller. </p>
+<p>Simulate an unshaded single pane CFS state and not control by a controller function.</p>
+<div class="highlight"><pre><span></span><code><span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">[</span><span class="s2">&quot;FenestrationSurface:Detailed&quot;</span><span class="p">][</span><span class="s2">&quot;Zn001:Wall001:Win001&quot;</span><span class="p">][</span><span class="s2">&quot;construction_name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Generic Clear Glass&quot;</span>
+<span class="k">with</span> <span class="n">eprad</span><span class="o">.</span><span class="n">EnergyPlusSetup</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">)</span> <span class="k">as</span> <span class="n">ep</span><span class="p">:</span>
+    <span class="n">ep</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">weather_file</span><span class="o">=</span><span class="s2">&quot;USA_CA_Oakland.Intl.AP.724930_TMY3.epw&quot;</span><span class="p">,</span>
+        <span class="n">output_prefix</span><span class="o">=</span><span class="s2">&quot;single_glass&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;./single_glassout.csv&quot;</span><span class="p">,</span>
+    <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">date_parser</span><span class="o">=</span><span class="n">eprad</span><span class="o">.</span><span class="n">ep_datetime_parser</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df_0721</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;1900-07-21&quot;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">y_vals</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">col</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_0721</span><span class="o">.</span><span class="n">columns</span>
+    <span class="k">if</span> <span class="s2">&quot;Surface Inside Face Solar Radiation Heat Gain Rate per Area&quot;</span> <span class="ow">in</span> <span class="n">col</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">y_val</span> <span class="ow">in</span> <span class="n">y_vals</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+        <span class="n">df_0721</span><span class="p">[</span><span class="n">y_val</span><span class="p">],</span>
+        <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">y_val</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:Surface&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%H:%M&quot;</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Solar Radiation Heat Gain Rate per Area [W/m2]&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">),</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="image" src="/assets/output_47_0.png" /></p>
+<h2 id="example-2-electrochromic-glass-with-4-tinted-states">Example 2 - electrochromic glass with 4 tinted states</h2>
+<h3 id="add-4-tinted-electrochromic-states-to-e-model">Add 4 tinted electrochromic states to E+ model</h3>
+<p>Each glazing system is consisted of one layer of ec glass and one layer of clear glass. The gap between the glasses is 10% air and 90% argon. The default gap is air at 0.0127m thickness. To customize the gap, use the <code>gaps</code>attribute of the <code>GlazingSystem</code>class. The <code>gaps</code>attribute is a list of tuples. Each tuple consists of tuples, where the first item is the gas type and the second item is the gas ratio, and a float for the gap thickness. The default thickness is 0.0127m. Also, to customize the name of the glazing system, use the <code>name</code>attribute of the <code>GlazingSystem</code>class.</p>
+<div class="highlight"><pre><span></span><code><span class="n">gs_ec01</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
+<span class="n">gs_ec01</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span>
+    <span class="s2">&quot;products/igsdb_product_7405.json&quot;</span>
+<span class="p">)</span>  <span class="c1"># SageGlass SR2.0_7mm lami fully tinted 1%T</span>
+<span class="n">gs_ec01</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_3.DAT&quot;</span><span class="p">)</span>
+<span class="n">gs_ec01</span><span class="o">.</span><span class="n">gaps</span> <span class="o">=</span> <span class="p">[((</span><span class="n">window</span><span class="o">.</span><span class="n">AIR</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="p">(</span><span class="n">window</span><span class="o">.</span><span class="n">ARGON</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="mf">0.0127</span><span class="p">)]</span>
+<span class="n">gs_ec01</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ec01&quot;</span>
+
+<span class="n">gs_ec06</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
+<span class="n">gs_ec06</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span>
+    <span class="s2">&quot;products/igsdb_product_7407.json&quot;</span>
+<span class="p">)</span>  <span class="c1"># SageGlass® SR2.0_7mm lami int state 6%T</span>
+<span class="n">gs_ec06</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_3.DAT&quot;</span><span class="p">)</span>
+<span class="n">gs_ec06</span><span class="o">.</span><span class="n">gaps</span> <span class="o">=</span> <span class="p">[((</span><span class="n">window</span><span class="o">.</span><span class="n">AIR</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="p">(</span><span class="n">window</span><span class="o">.</span><span class="n">ARGON</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="mf">0.0127</span><span class="p">)]</span>
+<span class="n">gs_ec06</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ec06&quot;</span>
+
+<span class="n">gs_ec18</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
+<span class="n">gs_ec18</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span>
+    <span class="s2">&quot;products/igsdb_product_7404.json&quot;</span>
+<span class="p">)</span>  <span class="c1"># SageGlass® SR2.0_7mm lami int state 18%T</span>
+<span class="n">gs_ec18</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_3.DAT&quot;</span><span class="p">)</span>
+<span class="n">gs_ec18</span><span class="o">.</span><span class="n">gaps</span> <span class="o">=</span> <span class="p">[((</span><span class="n">window</span><span class="o">.</span><span class="n">AIR</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="p">(</span><span class="n">window</span><span class="o">.</span><span class="n">ARGON</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="mf">0.0127</span><span class="p">)]</span>
+<span class="n">gs_ec18</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ec18&quot;</span>
+
+<span class="n">gs_ec60</span> <span class="o">=</span> <span class="n">window</span><span class="o">.</span><span class="n">GlazingSystem</span><span class="p">()</span>
+<span class="n">gs_ec60</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span>
+    <span class="s2">&quot;products/igsdb_product_7406.json&quot;</span>
+<span class="p">)</span>  <span class="c1"># SageGlass® SR2.0_7mm lami full clear 60%T</span>
+<span class="n">gs_ec60</span><span class="o">.</span><span class="n">add_glazing_layer</span><span class="p">(</span><span class="s2">&quot;products/CLEAR_3.DAT&quot;</span><span class="p">)</span>
+<span class="n">gs_ec60</span><span class="o">.</span><span class="n">gaps</span> <span class="o">=</span> <span class="p">[((</span><span class="n">window</span><span class="o">.</span><span class="n">AIR</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">),</span> <span class="p">(</span><span class="n">window</span><span class="o">.</span><span class="n">ARGON</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">),</span> <span class="mf">0.0127</span><span class="p">)]</span>
+<span class="n">gs_ec60</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ec60&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">gs_ec01</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
+<span class="n">gs_ec06</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
+<span class="n">gs_ec18</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
+<span class="n">gs_ec60</span><span class="o">.</span><span class="n">compute_solar_photopic_results</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_ec01</span><span class="p">)</span>
+<span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_ec06</span><span class="p">)</span>
+<span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_ec18</span><span class="p">)</span>
+<span class="n">epmodel</span><span class="o">.</span><span class="n">add_cfs</span><span class="p">(</span><span class="n">gs_ec60</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="define-controller-function-for-the-ec-states">Define controller function for the EC states</h3>
+<p>The elctrochromic glasses are controlled by time for the purpose of this demostration.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ec_controller</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+    <span class="n">shade_names</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="mi">0</span><span class="p">:</span> <span class="s2">&quot;ec01&quot;</span><span class="p">,</span>
+        <span class="mi">1</span><span class="p">:</span> <span class="s2">&quot;ec06&quot;</span><span class="p">,</span>
+        <span class="mi">2</span><span class="p">:</span> <span class="s2">&quot;ec18&quot;</span><span class="p">,</span>
+        <span class="mi">3</span><span class="p">:</span> <span class="s2">&quot;ec60&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">dt</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">get_datetime</span><span class="p">()</span>
+    <span class="c1"># print(dt.month)</span>
+
+    <span class="c1">## control CFS construction</span>
+    <span class="n">window_handle</span> <span class="o">=</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">window_actuators</span><span class="p">[</span><span class="s2">&quot;Zn001:Wall001:Win001&quot;</span><span class="p">]</span>
+
+    <span class="c1">#change the fenestration to shaded</span>
+    <span class="k">if</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;=</span> <span class="mi">8</span> <span class="ow">and</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&gt;</span> <span class="mi">12</span> <span class="ow">and</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">&lt;</span> <span class="mi">17</span><span class="p">:</span>
+        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">==</span> <span class="mi">12</span><span class="p">:</span>
+        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_shades</span> <span class="o">=</span> <span class="mi">3</span>
+
+    <span class="n">ep</span><span class="o">.</span><span class="n">actuate</span><span class="p">(</span>
+        <span class="n">window_handle</span><span class="p">,</span> <span class="n">ep</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">complex_fenestration_state</span><span class="p">[</span><span class="n">shade_names</span><span class="p">[</span><span class="n">_shades</span><span class="p">]]</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h3 id="initialize-pyenergyplusapi-to-simulate_1">Initialize pyenergyplus.api to simulate</h3>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">eprad</span><span class="o">.</span><span class="n">EnergyPlusSetup</span><span class="p">(</span><span class="n">api</span><span class="p">,</span> <span class="n">epmodel</span><span class="o">.</span><span class="n">epjs</span><span class="p">)</span> <span class="k">as</span> <span class="n">ep</span><span class="p">:</span>
+    <span class="n">ep</span><span class="o">.</span><span class="n">set_callback</span><span class="p">(</span><span class="s2">&quot;callback_begin_system_timestep_before_predictor&quot;</span><span class="p">,</span> <span class="n">ec_controller</span><span class="p">)</span>
+    <span class="n">ep</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="n">weather_file</span><span class="o">=</span><span class="s2">&quot;USA_CA_Oakland.Intl.AP.724930_TMY3.epw&quot;</span><span class="p">,</span>
+        <span class="n">output_prefix</span><span class="o">=</span><span class="s2">&quot;ec&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+<h3 id="load-and-visualize-results_1">Load and visualize results</h3>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s2">&quot;./ecout.csv&quot;</span><span class="p">,</span>
+    <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">date_parser</span><span class="o">=</span><span class="n">eprad</span><span class="o">.</span><span class="n">ep_datetime_parser</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">df_0721</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;1900-07-21&quot;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">df_0721</span><span class="p">[</span>
+        <span class="s2">&quot;ZN001:WALL001:WIN001:Surface Window Transmitted Solar Radiation Rate [W](TimeStep)&quot;</span>
+    <span class="p">],</span>
+    <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+    <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ZN001:WALL001:WIN001&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s2">&quot;%H:%M&quot;</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 8:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> 
+<span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 12:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">)),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;0.93&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 13:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> 
+<span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 17:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">)),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;0.85&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 12:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> 
+<span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 13:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">)),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;0.8&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;EC60%&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 4:30&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> <span class="mi">275</span><span class="p">),</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;18%&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 10:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> <span class="mi">275</span><span class="p">),</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;6%&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 15:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> <span class="mi">275</span><span class="p">),</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;1%&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 12:30&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> <span class="mi">275</span><span class="p">),</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;60%&#39;</span><span class="p">,</span>
+            <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s2">&quot;1900-07-21 21:00&quot;</span><span class="p">,</span> <span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2"> %H:%M&quot;</span><span class="p">),</span> <span class="mi">275</span><span class="p">),</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Window Transmitted Solar Radiation Rate [W]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="/assets/output_56_0.png" /></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
         </div>
         
       </main>
@@ -1105,10 +1469,11 @@ change thermostat settings, etc.&quot;
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.sections", "navigation.indexes"], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.ba449ae6.min.js"></script>
       
     
   </body>
