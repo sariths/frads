@@ -10,7 +10,6 @@ dependencies = [
     "pyradiance",
     "numpy",
     "matplotlib",
-    "pywincalc @ git+https://github.com/LBNL-ETA/pywincalc.git@layer_angular_absorptances",
 ]
 
 [tool.setuptools.dynamic]
