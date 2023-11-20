@@ -21,6 +21,7 @@ from epmodel.epmodel import (
     MaterialNoMass,
     SurfaceType,
     WindowMaterialGlazing,
+    WindowMaterialGas,
     WindowMaterialSimpleGlazingSystem,
 )
 
@@ -264,6 +265,16 @@ def parse_window_material_glazing(
     primitive = pr.Primitive("void", "glass", identifier, [], [tmis, tmis, tmis])
     return EPlusWindowMaterial(identifier, tmit, primitive)
 
+def parse_window_material_gas(
+        name:str, material: WindowMaterialGas
+) -> EPlusWindowMaterial:
+    """Parse EP WindowMaterial:Gas"""
+    #Optical properties are not defined for gasses in EnergyPlus, assume transmittance of 1
+    # So transmissivitiy will be 1.088581438
+    tmit = 1.088581438
+    identifier = name.replace(" ", "_")
+    primitive = pr.Primitive("void", "glass", identifier, [], [tmit, tmit, tmit,1])
+    return EPlusWindowMaterial(identifier, tmit, primitive,material.thickness)
 
 def parse_construction_complex_fenestration_state(
     epmodel: EnergyPlusModel,
@@ -353,6 +364,7 @@ class EnergyPlusToRadianceModelConverter:
             "material_no_mass",
             "window_material_simple_glazing_system",
             "window_material_glazing",
+            "window_material_gas"
         ]
         for key in material_keys:
             func = f"parse_{key}".lower()
